@@ -60,8 +60,9 @@ def error(rk1, rk2):
         for j in range(len(x2)):
             if(x1[i] == x2[j]):
                 error.append(abs(y1[i] - y2[j]))
-    return max(np.array(error))
+    return max(np.array(error) / 7)
 
-rk0 = RK(0, 0, 300, 0, 1)
+N = 100
+rk0 = RK(0, 0, N, 0, 1)
 for i in range(1, 6):
-    print("Error between 300 and %i points:" % (300 - 5 * i), round(error(rk0, RK(0, 0, 300 - 5 * i, 0, 1)), 7))
+    print("Error between %i and %i points:" % (N, N - 5 * i), round(error(rk0, RK(0, 0, N - 5 * i, 0, 1)), 7))
